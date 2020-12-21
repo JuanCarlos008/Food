@@ -1,0 +1,564 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+$font-color1: #ffffff;
+$main-color: #ff0157;
+$second-color: #111111;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+a{
+    text-decoration: none;
+    outline: none;
+}
+
+li{
+    list-style: none;
+}
+
+span{
+    color: $main-color;
+    font-size: 2rem;
+}
+
+.btn{
+    font-size: 1rem;
+    color:$font-color1;
+    background-color: $main-color;
+    display: inline-block;
+    padding: 10px 30px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.5s;
+
+    &:hover{
+        letter-spacing: 6px;
+        border-radius: 10px;
+    }
+}
+
+section{
+    padding: 100px;
+}
+
+.titleText{
+    color: $second-color;
+    font-size: 2rem;
+    font-weight: 300;
+
+    span{
+        font-size: 3rem;
+        font-weight: 700;
+    }
+}
+
+.title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* --------------------------------------------------------- */
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 100px;
+    z-index: 100;
+    transition: .5s;
+    
+    &.sticky{
+        background-color: $font-color1;
+        padding: 10px 100px;
+        box-shadow: 0 5px 20px rgba(0,0,0,.2);
+
+        .brand{
+            color: $second-color;
+        }
+
+        nav{
+            .navigation{
+                li{
+                    a{
+                        color: $second-color;
+                    }
+                }
+            }
+        }
+    }
+
+    nav{
+        display: flex;
+        width: inherit;
+        justify-content: space-between;
+        align-items: center;
+
+        .brand{
+            color: $font-color1;
+            font-weight: 700;
+            font-size: 2rem;
+        }
+
+        .navigation{
+            position: relative;
+            display: inherit;
+
+            li{
+                margin-left: 30px;
+
+                a{
+                    color: $font-color1;
+                    font-weight: 300;
+                    transition: .3s;
+
+                    &:hover{
+                        color: $main-color;
+                        font-weight: 500;
+                        letter-spacing: 1px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//Section 1
+
+.banner{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../img/bg.jpg);
+    background-size: cover;
+
+    .content{
+        max-width: 900px;
+        text-align: center;
+        h2{
+            font-size: 5rem;
+            color: $font-color1;
+        }
+
+        p{
+            font-weight: 300;
+            color: $font-color1;
+            font-size: 1rem;
+
+        }
+    }
+}
+
+
+//Section 2
+
+.about{
+    .row{
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .col50{
+            width: 48%;
+
+            .imgBox{
+                position: relative;
+                width: 100%;
+                height: 100%;
+
+                img{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+}
+
+@mixin contentStyle($direction){
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    flex-direction: $direction;
+}
+
+@mixin wmBox($w, $m) {
+    width: $w;
+    margin: $m;
+}
+
+@mixin boxImgStyle {
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+@mixin imgStyle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@mixin  textStyle {
+    .text{
+        padding: 15px 0 5px;
+
+        h3{
+            font-weight: 400;
+            color: $second-color;
+        }
+    }
+}
+//Section 3
+
+.menu{
+    .content{
+
+        @include contentStyle(row-reverse);
+
+        .box{
+            @include wmBox(340px, 20px);
+            border: 15px solid $font-color1;
+            box-shadow: 0 5px 35px rgba(0,0,0,.08);
+
+            .imgBox{
+                @include boxImgStyle();
+
+                img{
+                    @include imgStyle();
+                }
+            }
+            @include textStyle();
+        }
+    }
+}
+
+
+//Section 4
+
+.expert{
+    .content{
+
+        @include contentStyle(row);
+
+        .box{
+            @include wmBox(250px, 15px);
+            border: 15px solid $font-color1;
+            box-shadow: 0 5px 35px rgba(0,0,0,.08);
+
+            .imgBox{
+                @include boxImgStyle();
+
+                img{
+                    @include imgStyle();
+                }
+            }
+            @include textStyle();
+        }
+    }
+}
+
+
+
+//Section 5
+
+.testimonials{
+    background-image: url(../img/bg2.jpg);
+    background-size: cover;
+
+    .title{
+        .titleText{
+            color: $font-color1;
+        }
+        p{
+            color: $font-color1;
+        }
+    }
+    .content{
+        @include contentStyle(row);
+
+        .box{
+            @include wmBox(340px, 20px);
+            padding: 40px;
+            background-color: $font-color1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            .imgBox{
+                position: relative;
+                width: 80px;
+                height: 80px;
+                margin-bottom: 20px;
+                border-radius: 50%;
+                overflow: hidden;
+
+                img{
+                    @include imgStyle();
+                }
+            }
+
+            .text{
+                text-align: center;
+
+                p{
+                    color: $second-color;
+                    opacity: .6;
+                }
+
+                h3{
+                    font: {
+                        size: 1rem;
+                        weight: 600;
+                    }
+                    
+                    margin-top: 20px;
+                    color: $main-color;
+                }
+            }
+        }
+    }
+}
+
+
+//Section 6
+
+.contact{
+    background-image: url(../img/bg3.jpg);
+    background-size: cover;
+
+    .contactForm{
+        padding: 75px 50px;
+        background-color: $font-color1;
+        box-shadow: 0 15px 50px rgba(0,0,0,.1);
+        max-width: 500px;
+        margin-top: 50px;
+
+        h3{
+            color: $second-color;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .inputBox{
+            position: relative;
+            width: 100%;
+            margin-bottom: 20px;
+
+            input, textarea{
+                width: 100%;
+                border: 1px solid #999;
+                padding: 10px;
+                color: $second-color;       
+                outline: none;
+                font-size: 1rem;        
+                font-weight: 300; 
+                resize: none;
+            }
+
+            input[type=submit]{
+                color: $font-color1;
+                border: none;
+                max-width: 150px;
+            }
+        }
+    }
+}
+
+
+//footer
+
+footer{
+    .copyright{
+        padding: 8px 40px;
+        border-top: 1px solid rgba(0,0,0,.1);
+        text-align: center;
+        p{
+            color: #333;
+        }
+
+        a{
+            color: $main-color;
+        }
+    }
+}
+
+
+
+//Media Queries
+
+@media (max-width: 991px){
+
+    header, header.sticky{
+        padding: 10px 20px;
+        nav{
+            .menuToggle{
+                position: relative;
+                width: 40px;
+                height: 40px;
+                background: {
+                    image: url(../img/menu.png);
+                    repeat: no-repeat;
+                    size: 30px;
+                    position: center;
+                }
+                cursor: pointer;
+
+                &.active{
+                    background-image: url(../img/close.png);
+                }
+            }
+
+            .navigation{
+                display: none;
+
+                &.active{
+                    position: fixed;
+                    width: 100%;
+                    height: calc(100% - 68px);
+                    top: 68px;
+                    left: 0;
+                    background-color: $font-color1;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                }
+
+                li{
+                    margin-left: 0;
+                    padding: 10px 0;
+
+                    a{
+                        font-size: 1.3rem;
+                        color: $second-color;
+
+                        &:hover{
+                            color: $main-color;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.sticky{
+            nav{
+                .menuToggle{
+                    filter: invert(1);
+                }
+            }
+        }
+    }
+
+    section{
+        padding: 20px;
+    }
+
+    .banner{
+        .content{
+            h2{
+                font-size: 3rem;
+            }
+        }
+    }
+
+    .about{
+        .row{
+            flex-direction: column;
+
+            .col50{
+                width: 100%;
+
+                .imgBox{
+                    height: 300px;
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+
+    .menu{
+        .content{
+            margin-top: 20px;
+            
+            .box{
+                margin: 10px;
+
+                .imgBox{
+                    height: 260px;
+                }
+            }
+        }
+    }
+
+    .title{
+        text-align: center;
+
+        .titleText{
+            line-height: 2.3rem;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+    }
+
+    .testimonials{
+        .content{
+            .box{
+                margin: 10px;
+                padding: 20px;
+                width: 340px;
+            }
+        }
+    }
+
+    .contact{
+        .contactForm{
+            padding: 35px 40px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+    }
+
+    footer{
+        .copyright{
+            padding: 8px 20px;
+        }
+    }
+}
+
+
+@media (max-width: 480px){
+    .banner{
+        .content{
+            h2{
+                font-size: 2.2rem;
+            }
+        }
+    }
+}
